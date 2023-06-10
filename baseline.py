@@ -35,6 +35,8 @@ logger = logging.getLogger(__name__)
 import warnings
 warnings.filterwarnings('ignore')
 
+device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+print(f"********** Using : {device} **********")
 
 def train_epoch(model, dataloader_train, dataloader_val, optimizer, scheduler, device, epoch):
     model.train()
@@ -71,7 +73,7 @@ def train_epoch(model, dataloader_train, dataloader_val, optimizer, scheduler, d
     loss_train_avg = loss_train_total / len(dataloader_train)
     tqdm.write('Training Loss: {}'.format(loss_train_avg))
     
-    val_loss, acc, _, _ = evaluate(model, dataloader_val, device)
+    val_loss, acc, _ = evaluate(model, dataloader_val, device)
     tqdm.write('Val Loss: {}\Val Accuracy: {}'.format(val_loss, acc))
 
 
@@ -209,7 +211,6 @@ def main():
 
 
     logger.info("***** 4. Initialize the model and optimizer. *****")
-    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     model = BertForSequenceClassification.from_pretrained(args.model,
                                         num_labels = 2,
                                         output_attentions = False,
