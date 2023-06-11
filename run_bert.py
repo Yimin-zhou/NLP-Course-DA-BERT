@@ -165,6 +165,7 @@ def main():
     test_labels = test["score"].tolist()
 
     logger.info("***** 2. Tokenize the data. *****")
+    
     tokenizer = BertTokenizer.from_pretrained(args.model)
 
     encoder_train = tokenizer.batch_encode_plus(training_sentences,
@@ -224,15 +225,21 @@ def main():
         train_epoch(model, dataloader_train, dataloader_val, optimizer, scheduler, device, epoch)
     
     logger.info("***** 6. Save the model. *****")
-    if not os.path.exists(args.output):
-        os.makedirs(args.output)
+    ouput_dir = args.output + '/model_save/'
+    if not os.path.exists(ouput_dir):
+        os.makedirs(ouput_dir)
 
     model_to_save = model.module if hasattr(model,'module') else model
-    model_to_save.save_pretrained(args.output)
+    model_to_save.save_pretrained(ouput_dir)
 
     _, acc, class_report = evaluate(model, dataloader_test, device)    
-
+    
     print(class_report)
+
+    # save the classification report
+    logger.info("***** 7. Save the classification report. *****")
+    with open(os.path.join(args.output, "classification_report.txt"), "w") as f:
+        f.write(class_report)
 
 if __name__ == "__main__":
     main()
