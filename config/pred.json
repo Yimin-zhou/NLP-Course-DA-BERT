@@ -1,0 +1,13 @@
+{
+    "mode": "pred",
+    "max_seq_length": 128,
+    "pred_batch_size": 16,
+    "do_lower_case": true,
+    "data_parallel": false,
+    "need_prepro": true,
+    "model_file": "iter_results_2022/0705/uda_train2196_eval406_unsup30000x3/save/model_steps_3200.pt",
+    "pred_data_dir": "data/2022/0705/labeled_after_0616.csv",
+    "vocab":"BERT_Base_Uncased/vocab.txt",
+    "task": "forexc"
+}
+

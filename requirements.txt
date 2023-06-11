@@ -1,0 +1,11 @@
+fire
+tqdm
+tensorboardX
+tensorflow
+torch
+pandas
+numpy
+transformers
+sentencepiece
+sacremoses
+scikit-learn

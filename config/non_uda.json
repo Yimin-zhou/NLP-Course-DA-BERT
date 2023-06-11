@@ -1,0 +1,28 @@
+{
+    "seed": 42,
+    "lr": 2e-5,
+    "warmup": 0.1,
+    "do_lower_case": true,
+    "mode": "train_eval",
+    "uda_mode": false,
+
+    "total_steps": 10000,
+    "max_seq_length": 128,
+    "train_batch_size": 32,
+    "eval_batch_size": 16,
+
+    "data_parallel": false,
+    "need_prepro": true,
+    "sup_data_dir": "data/2022/0303/train_eval/train_2043.csv",
+    "eval_data_dir": "data/2022/0303/train_eval/eval_406.csv",
+
+    "model_file":null,
+    "pretrain_file":"BERT_Base_Uncased/bert_model.ckpt",
+    "vocab":"BERT_Base_Uncased/vocab.txt",
+    "task": "forexc",
+
+    "save_steps": 100,
+    "check_steps": 100,
+    "results_dir": "iter_results_2022/0512/non_uda_train2043_eval406",
+    "is_position": false
+}
