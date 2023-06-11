@@ -9,4 +9,4 @@ plotly
 imbalanced-learn
 scikit-learn
 Pillow
-tensorflow
+torch
