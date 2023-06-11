@@ -1,5 +1,5 @@
 @echo off
-set train_data=data\baseline\train_100.csv
+set train_data=data\baseline\output3.csv
 set valid_data=data\baseline\train_1000.csv
 set test_data=data\baseline\test_2000.csv
 set model=bert-base-uncased
