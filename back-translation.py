@@ -49,17 +49,24 @@ print(unsup.head())
 print(unsup['text'].apply(lambda x: len(x.split(' '))).value_counts())
 print(back_translate(src_text))
 
-newdf = pd.DataFrame(np.repeat(unsup.values, 3, axis=0))
-newdf.columns = unsup.columns
-print(newdf.head(10))
+times = 3
 
-for i in range(len(newdf)):
+# newdf = pd.DataFrame(np.repeat(unsup.values, 3, axis=0))
+# newdf.columns = unsup.columns
+
+print(back_translate(unsup['text'][0][:512]))
+
+newdf = pd.DataFrame(columns=['ori', 'aug'])
+
+for i in range(len(unsup)):
     if i % 100 == 0:
         print(i)
-    ori = newdf['text'][i][:512]
+    ori = unsup['text'][i][:512]
     aug = back_translate(ori)
-    newdf.at[i, 'text'] = aug[0]
-
+    for j in range(times):
+        row = {'ori': ori, 'aug': aug[j]}
+        # newdf = newdf.append(row, ignore_index=True)
+        newdf = pd.concat([newdf, pd.DataFrame(row, index=[0])], ignore_index=True)
 
 newdf.to_csv('data/unsup/unsup_20000_aug3.csv', index=False)
 
