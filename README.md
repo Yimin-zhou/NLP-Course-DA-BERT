@@ -9,6 +9,20 @@
   
 This repository contains the code implementation for experiments on data augmentation techniques in Natural Language Processing (NLP), specifically focused on sentiment analysis. The experiment aims to compare and analyze the effectiveness of different data augmentation methods on optimizing the performance of sentiment analysis models, using a pre-trained BERT model.
 
+## Computational Resources
+
+The project utilizes the computational resources provided by the Lambda cloud platform. The available resources are as follows:
+
+- GPU: 1x A10 (24 GB PCIe)
+- CPU: 30 vCPUs
+- RAM: 200 GiB
+- Storage: 1.4 TiB SSD
+
+These resources will be utilized for running the experiments and training the models.
+
+Please note that the resource availability may be subject to change. For more information about the Lambda cloud platform and its resources, please refer to their documentation.
+
+
 
 ## License
 
